@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < recyclerView.getAdapter().getItemCount(); i++) {
             MyViewHolder holder = (MyViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
             if(holder != null) {
-                holder.setCheckboxIsChecked(false);
                 holder.getCheckboxImageView().setImageResource(android.R.drawable.checkbox_off_background);
             }
         }

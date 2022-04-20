@@ -11,7 +11,7 @@ public class TestData {
     static SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.getDefault());
     static List<Person> listPersons;
     static {
-        listPersons = new ArrayList<Person>();
+        listPersons = new ArrayList<>();
         try {
             listPersons.add(new Person(formatter.parse("29/1/1988"),"Romain"));
             listPersons.add(new Person(formatter.parse("06/8/2090"),"Jodré"));

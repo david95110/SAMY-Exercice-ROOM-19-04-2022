@@ -7,23 +7,26 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.tpandroid_room.database.Person;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
+    // Attributes
     public static int actualCheckBoxCounter = 0;
     List<Person> persons;
     MainActivity mainActivity;
     public static List<Person> selectedPersons = new ArrayList<>();
 
 
+    // Constructor
     public MyAdapter(List<Person> persons, Context context) {
         this.persons = persons;
         this.mainActivity = (MainActivity) context;
     }
 
+
+    // Methods
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,25 +37,29 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Person person = persons.get(position);
 
         holder.setNameTextView(persons.get(position).getNom());
         holder.setDateTextView(persons.get(position).getDateIntoStringFormat());
 
-        holder.getCheckboxImageView().setOnClickListener(view -> {
-            Person person = persons.get(position);
+        // Persistance de données pour les checkbox
+        if(MyAdapter.selectedPersons.contains(person)) {
+            holder.getCheckboxImageView().setImageResource(android.R.drawable.checkbox_on_background);
+        }
 
+        holder.getCheckboxImageView().setOnClickListener(view -> {
             // Compteur avant les changements
             int startCounter = actualCheckBoxCounter;
 
-            if(!holder.isCheckboxIsChecked()) {
+            if(!selectedPersons.contains(person)) {
                 // On décoche la Checkbox, affiche la bonne image, incrémente le compteur, et ajoute la personne
-                holder.setCheckboxIsChecked(true);
+                //holder.setCheckboxIsChecked(true);
                 holder.setCheckboxImageView(android.R.drawable.checkbox_on_background);
                 actualCheckBoxCounter++;
                 selectedPersons.add(person);
             } else {
                 // On décoche la Checkbox, affiche la bonne image, désincrémente le compteur, et retire la personne
-                holder.setCheckboxIsChecked(false);
+                //holder.setCheckboxIsChecked(false);
                 holder.setCheckboxImageView(android.R.drawable.checkbox_off_background);
                 actualCheckBoxCounter--;
                 selectedPersons.remove(person);

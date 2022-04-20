@@ -47,11 +47,6 @@ public class Person {
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -62,16 +57,8 @@ public class Person {
     }
 
     // Setters
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public String getNom() {
         return nom;
-    }
-
-    public void setNom(String text) {
-        this.nom = text;
     }
 
     @Override
