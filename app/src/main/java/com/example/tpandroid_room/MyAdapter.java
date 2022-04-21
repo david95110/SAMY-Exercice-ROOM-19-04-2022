@@ -13,7 +13,6 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     // Attributes
-    public static int actualCheckBoxCounter = 0;
     List<Person> persons;
     MainActivity mainActivity;
     public static List<Person> selectedPersons = new ArrayList<>();
@@ -49,24 +48,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
         holder.getCheckboxImageView().setOnClickListener(view -> {
             // Compteur avant les changements
-            int startCounter = actualCheckBoxCounter;
+            int startCounter = selectedPersons.size();
 
             if(!selectedPersons.contains(person)) {
                 // On décoche la Checkbox, affiche la bonne image, incrémente le compteur, et ajoute la personne
                 //holder.setCheckboxIsChecked(true);
                 holder.setCheckboxImageView(android.R.drawable.checkbox_on_background);
-                actualCheckBoxCounter++;
                 selectedPersons.add(person);
             } else {
                 // On décoche la Checkbox, affiche la bonne image, désincrémente le compteur, et retire la personne
                 //holder.setCheckboxIsChecked(false);
                 holder.setCheckboxImageView(android.R.drawable.checkbox_off_background);
-                actualCheckBoxCounter--;
                 selectedPersons.remove(person);
             }
 
             // Compteur après les changements
-            int endCounter = actualCheckBoxCounter;
+            int endCounter = selectedPersons.size();
             // On intervertit les menus si nécessaire
             if((startCounter == 0) || (endCounter == 0)) {
                 mainActivity.switchMenu();

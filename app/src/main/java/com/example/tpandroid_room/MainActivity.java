@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void resetCheckBoxes() {
         MyAdapter.selectedPersons.clear();
-        MyAdapter.actualCheckBoxCounter = 0;
         uncheckAllCheckboxes();
     }
 
